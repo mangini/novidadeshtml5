@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<!--
+Changes: Renato Mangini | profiles.google.com/mangini | @renatomangini
+
+Based on changed slides by: Ido Green | http://ido-green.appspot.com/
+Original slides template: https://code.google.com/p/io-2012-slides
+template authors: Eric Bidelman <ebidel@gmail.com> & Luke Mahé <lukem@google.com>
+
+-->
+<html>
+<head>
+  <title>Recursos de HTML5 que (talvez) você não conheça</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <!--<link rel="stylesheet" media="all" href="theme/css/custom.css">-->
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0" class="weavebg">
+
+  <slides class="layout-widescreen">
+
+    <slide hidden class="logoslide nobackground">
+      <article class="flexbox vcenter">
+        <span><img src="images/google_developers_logo.png"></span>
+      </article>
+    </slide>
+
+    <slide class="title-slide segue nobackground">
+      <aside class="gdbar"><img src="images/chrome_logo.png"></aside>
+      <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+      <hgroup class="auto-fadein">
+        <h1 data-config-title><!-- populated from slide_config.json --></h1>
+        <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+        <p data-config-presenter><!-- populated from slide_config.json --></p>
+      </hgroup>
+    </slide>
+
+      <slide>
+        <hgroup>
+          <h2>Quem sou eu?</h2>
+        </hgroup>
+        <article id="who">
+          <span class="build">
+            <!--p class="avatar rounded"></p-->
+          </span>
+          <p>
+            <span data-config-presenter-title></span> &middot;
+            <span data-config-presenter-company></span>
+          </p>
+          <p style="margin-top:2em;">
+            <a rel="author" data-config-gplus>
+              <img src="http://www.google.com/images/icons/ui/gprofile_button-44.png" width="44" height="44"></a> +<a rel="author" data-config-gplus><span data-config-presenter-name></span></a>
+            </p>
+            <p>
+              <a rel="author" style="margin-left:-8px;" data-config-twitter>
+                <img src="images/twitter_newbird_blue.png" width="58" height="58"></a> <a rel="author" style="margin-left:-5px;" data-config-twitter></a>
+              </p>
+              <p>
+                <a rel="author" data-config-www></a>
+              </p>
+            </article>
+          </slide>
+
+
+
+          <slide>
+            <h2>Web app moderna</h2>
+            <div class="low-list flexbox hcenter">
+             <ul class="build fade">
+
+              <li class="to-build">"Offline First"</li>
+              <li class="to-build">Auto-contida e funcional</li>
+              <li class="to-build">Arquitetura "client side"</li>
+              <li class="to-build">Acesso a devices</li>
+              <li class="to-build">Rápida! (60fps)</li>
+
+            </ul>
+            <img src="images/gr8-web-apps.png" alt="examples for great web apps that leverage html5 apis" />
+          </div>
+        </slide>
+
+
+          <slide>
+            <h2>Offline first - Por quê?</h2>
+            <div class="low-list flexbox hcenter">
+             <ul class="build fade" >
+              <li class="to-build">Melhor desempenho</li>
+              <li class="to-build">Aeroporto, ilha deserta, naufrágio, ...</li>
+              <li class="to-build">Conexões instáveis (<span style="color: #AAA; text-decoration: line-through;">0G</span>3G)</li>
+              <li class="to-build">Expectativa de disponibilidade de uma app:<br/>sempre disponível</li>
+            </ul>
+            <img src="images/offline-road.png" alt="offline on the road" />
+          </div>
+        </slide>
+
+        <slide>
+          <h2>Offline first - Como?</h2>
+          <div class="low-list flexbox hcenter">
+
+           <ul class="build fade">
+            <li class="to-build">Recursos: AppCache</li>
+            <li class="to-build">Dados: localStorage, IndexedDB, File API.</li>
+            <li class="to-build">Desenvolvendo offline first:
+              <ul>
+                <li>Assuma que não há conexão disponível!</li>
+                <li>Implemente uma camada que <br/>sincroniza com o servidor quando está online</li>
+              </ul>
+            </li>
+            <li class="to-build">
+              <pre>navigator.onLine
+window.(ononline|onoffline)</pre>
+            </li>
+            <li class="to-build"><a href="http://www.html5rocks.com/en/mobile/workingoffthegrid/">Working off the grid - HTML5Rocks</a>
+            </li>
+           </ul>
+
+            <img src="images/offline-road2.png" alt="offline on the road" />
+          </div>
+        </slide>
+
+          <slide class="nobackground" data-body-class="cat">
+            <article class="flexbox vcenter">
+              <span><a href="http://active.tutsplus.com/articles/roundups/10-flash-things-you-can%E2%80%99t-do-with-html5/" style="border:none"><img src="images/html_can_not_do_that.jpg"></a></span>
+              <div class="source"><a href="http://www.flickr.com/photos/thefangmonster/490423135/" class="white">www.flickr.com/photos/thefangmonster/490423135/</a></div>
+            </article>
+          </slide>
+
+          <slide class="fill nobackground" data-body-class="nobackground">
+            <article>
+              <iframe width="640" height="390" data-src="http://www.youtube.com/embed/R0T13iiAzLM?autoplay=0&origin=http://localhost" 
+              frameborder="0"></iframe>
+            </article>
+          </slide>
+
+        <!-- HTML5 APIs you want to learn real good ;) -->
+        <slide class="can nobackground">
+          <article class="flexbox vcenter">
+            <hgroup>
+              <h2 class="white auto-fadein">CSS adequado a Web Apps</h2>
+              <span class="build"><h1 class="stamp">Confirmado</h1></span>
+            </hgroup>
+          </article>
+        </slide>
+
+        <slide>
+          <hgroup>
+            <h2>Floats, Tables e Absolute position... OMG!!!!</h2>
+          </hgroup>
+          <article>
+            <ul>
+              <li>Floats são incontroláveis</li>
+              <li>Tables não possuem semântica</li>
+              <li>position: absolute dificulta "responsive design"</li>
+              <li>CSS3 resolve com 
+                <a href="http://adobe.github.com/web-platform/samples/css-regions/basic/transformed.html">regions</a>, 
+                <a href="http://adobe.github.com/web-platform/samples/css-exclusions/basic/shape-inside-dynamic.html">exclusions</a>, 
+                e <a href="http://html5-demos.appspot.com/static/css/flexbox/index.html" class="previewframe">flexible box</a>.</li>
+            </ul>
+          </article>
+        </slide>
+
+        <slide>
+          <hgroup>
+            <h2>2012: CSS3 para Web Apps (w3c)</h2>
+          </hgroup>
+          <article>
+            <ul>
+              <li><a href="http://dev.w3.org/csswg/css3-regions/">CSS Regions Module Level 3</a></li>
+              <li><a href="http://dev.w3.org/csswg/css3-flexbox/">CSS Flexible Box Layout Module</a></li>
+              <li><a href="http://dev.w3.org/csswg/css3-grid-align/">CSS Grid Layout</a></li>
+              <li><a href="http://dev.w3.org/csswg/css3-hierarchies/">CSS Hierarchies</a></li>
+              <li><a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html">CSS Filter Effects 1.0</a></li>
+              <li><a href="http://dev.w3.org/csswg/css-variables/">CSS Variables Module Level 1</a></li>
+            </ul>
+          </article>
+        </slide>
+
+<slide>
+  <hgroup>
+    <h2>Browser Support</h2>
+  </hgroup>
+  <article class="flexbox vcenter" style="height:65%">
+    <h2>CSS Regions</h2>
+    <div class="browser-support smaller">
+      <img src="images/browser_logos/safari_logo.png">
+      <img src="images/chrome_logo.png" class="supported">
+      <img src="images/browser_logos/ff_logo.png" class="supported">
+      <img src="images/browser_logos/opera_logo.png">
+      <img src="images/browser_logos/ie10_logo.png" class="supported">
+    </div>
+    <h2>CSS Exclusions</h2>
+    <div class="browser-support smaller">
+      <img src="images/browser_logos/safari_logo.png">
+      <img src="images/chrome_logo.png" class="supported">
+      <img src="images/browser_logos/ff_logo.png">
+      <img src="images/browser_logos/opera_logo.png">
+      <img src="images/browser_logos/ie10_logo.png">
+    </div>
+    <h2>CSS Flexbox (spec nova)</h2>
+    <div class="browser-support smaller">
+      <img src="images/browser_logos/safari_logo.png" class="supported">
+      <img src="images/chrome_logo.png" class="supported">
+      <img src="images/browser_logos/ff_logo.png">
+      <img src="images/browser_logos/opera_logo.png" class="supported">
+      <img src="images/browser_logos/ie10_logo.png" class="supported">
+    </div>
+  </article>
+</slide>
+
+<slide class="can nobackground">
+  <article class="flexbox vcenter">
+    <hgroup>
+      <h2 class="white auto-fadein">CSS dinâmico</h2>
+      <span class="build"><h1 class="stamp">Confirmado</h1></span>
+    </hgroup>
+  </article>
+</slide>
+
+<slide>
+  <aside class="note">
+    <section>
+      <p>Support: <code>-webkit-calc()</code>, <code>-moz-calc()</code>, IE9.</p>
+    </section>
+  </aside>
+  <hgroup>
+    <span>
+      <a href="http://webk.it/16662" class="bug"></a>
+      <a href="http://www.w3.org/TR/css3-values/#calc" class="spec" title="Spec link" alt="Spec link"></a>
+    </span>
+    <h2>calc()</h2>
+  </hgroup>
+  <article id="flexbox-circle" class="columns-2">
+    <pre class="prettyprint" data-lang="css">
+.circle {
+  width: 300px;
+  height: 300px;
+}
+div {
+  display: <a data-tooltip-property="flex" class="bold"></a>;
+  width: <a data-tooltip-property="calc" data-tooltip-support='["webkit", "moz", "unprefixed"]' class="bold"></a>(100% - 4em);
+  height: <a data-tooltip-property="calc" data-tooltip-support='["webkit", "moz", "unprefixed"]' class="bold"></a>(100% - 4em);
+  border-radius: 50%;
+  <a data-tooltip-property="align-items" data-tooltip-support='["webkit"]' class="bold"></a>: center;
+  <a data-tooltip-property="justify-content" data-tooltip-support='["webkit"]' class="bold"></a>: center;
+}
+div:hover {
+  border-radius: 0;
+}
+</pre>
+<div class="circle">
+  <div>
+    <div><div></div></div>
+  </div>
+</div>
+</article>
+</slide>
+
+
+<slide>
+  <hgroup>
+    <h2>Browser Support</h2>
+    <h3>CSS calc()</h3>
+  </hgroup>
+  <article class="flexbox vcenter" style="height:65%">
+    <div class="browser-support">
+      <img src="images/browser_logos/safari_logo.png" class="supported">
+      <img src="images/chrome_logo.png" class="supported">
+      <img src="images/browser_logos/ff_logo.png" class="supported">
+      <img src="images/browser_logos/opera_logo.png">
+      <img src="images/browser_logos/ie10_logo.png" class="supported">
+    </div>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <span>
+      <a href="http://webk.it/68469" class="bug" title="Bug link"></a>
+      <a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html" class="spec" title="Spec link"></a>
+    </span>
+    <h2>CSS Filter Effects</h2>
+  </hgroup>
+  <article>
+    <p>Apply filter effects to any DOM element:</p>
+    <pre class="prettyprint" data-lang="css">
+      video, img {
+        <a data-tooltip-property="filter" class="bold"></a>: grayscale(0.5) blur(10px);
+      }
+    </pre>
+   <p>Good <a href="http://drublic.de/blog/effects-for-the-web/">blog post</a>.</p>
+   <p class="centered"><a href="http://lab.simurai.com/stars/" class="demo">Demo</a></p>
+</article>
+</slide>
+
+<slide>
+  <hgroup>
+    <span>
+      <img src="images/icons/radar.svg" class="radar" title="Coming soon...keep it on your radar!">
+    </span>
+    <h2>CSS Custom Filters (CSS Shaders)</h2>
+  </hgroup>
+  <article>
+    <pre class="prettyprint cssshader" data-lang="css">
+.cssshade:hover {
+  -webkit-filter: custom(url(shaders/vertex/crumple.vs) 
+    mix(url(shaders/fragment/crumple.fs) multiply source-atop), 
+    50 50 border-box, 
+    transform perspective(1000) scale(1) 
+      rotateX(0deg) rotateY(0deg) rotateZ(0deg), 
+    amount 1, strength 0.4, lightIntensity 1);  
+  }
+  </pre>
+
+</article>
+</slide>
+
+
+
+          <slide class="can nobackground">
+            <article class="flexbox vcenter">
+              <hgroup>
+                <h2 class="white auto-fadein">JavaScript multithread</h2>
+                <span class="build"><h1 class="stamp">Confirmed</h1></span>
+              </hgroup>
+            </article>
+          </slide>
+
+          <slide>
+            <article>
+              <h2>Web Workers</h2>
+              <h4>index.html</h4>
+              <pre class="prettyprint" data-lang="html/js">
+function startWorker(settings) {
+  var myWorker = new Worker('scripts/worker.js');
+  myWorker.addEventListener("message", workerListener, false);
+  myWorker.postMessage(settings);
+}                     </pre>
+            <h4>Worker.js</h4>
+            <pre class="prettyprint" data-lang="js">
+self.addEventListener('message', function(e) {
+  doSomeWork();
+}
+function doSomeWork() {
+  importScripts('js/script1.js');
+  ...
+  postMessage(result);
+}     </pre>
+    </article>
+  </slide>
+
+  <slide hidden>
+    <h3>Web Worker - Debug</h3>
+    <article id="webworker-box"> <!-- class="flexbox vcenter"-->
+
+      <div>
+        <img src="images/debug-webworkers-on-chrome.png" alt="debug worker in chrome devtool"/>
+      </div>
+
+      <div>
+       <ul>
+        <li>if (Modernizr.webworkers)</li>
+        <li><a href="http://greenido.wordpress.com/2011/11/03/web-workers-part-3-out-of-3-shared-wrokers/">Shared Workers</a> - Shared web workers allow any number of scripts to communicate with a single worker</li>
+        <li>
+          <a href="http://greenido.github.com/Web-Workers-Examples-/">The book examples
+          </a>
+        </li>
+      </div>
+    </article>   
+  </slide>
+
+
+  <slide class="can nobackground">
+    <article class="flexbox vcenter">
+      <hgroup>
+        <h2 class="white auto-fadein">Acessando um Filesystem</h2>
+        <span class="build"><h1 class="stamp">Confirmado</h1></span>
+      </hgroup>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <span>
+        <a href="http://dev.w3.org/2009/dap/file-system/file-dir-sys.html" class="spec" title="Spec link"></a>
+      </span>
+      <h2>HTML5 Filesystem API</h2>
+      <h3>Persistência em arquivos/diretórios</h3>
+    </hgroup>
+    <article>
+      <p>Abrindo um filesystem:</p>
+      <pre class="prettyprint" data-lang="js">
+window.<a data-tooltip-property="requestFileSystem" data-tooltip-support='["webkit"]' data-tooltip-js class="bold"></a>(
+  TEMPORARY,        // PERSISTENT vs. TEMPORARY
+  1024 * 1024,      // tamanho (bytes) requerido
+  initFs,           // callback de sucesso
+  opt_errorHandler  // callback de erro
+);    </pre>
+      <ul class="build">
+        <li>Segurança: o FS é sandboxed</li>
+        <li>Apps nativas acessam arquivos/diretórios... web apps também!</li>
+        <li>Uso: cache dinâmico e controlado</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Exemplo: Cache de arquivos remotos</h2>
+    </hgroup>
+    <article class="">
+      <pre class="prettyprint" data-lang="js">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/path/to/image.png', true);
+<b>xhr.responseType = 'arraybuffer';</b>
+xhr.onload = function(e) {
+
+
+
+
+
+
+
+};
+xhr.send();    </pre>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+      <h2>Exemplo: Cache de arquivos remotos</h2>
+  </hgroup>
+  <article class="">
+    <pre class="prettyprint" data-lang="js">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/path/to/image.png', true);
+xhr.responseType = 'arraybuffer';
+xhr.onload = function(e) {
+  <b>window.<a data-tooltip-property="requestFileSystem" data-tooltip-support='["webkit"]' data-tooltip-js class="bold"></a>(TEMPORARY, 1024 * 1024, function(fs) {</b>
+  <b>}, onError);</b>
+};
+
+xhr.send();</pre>
+</article>
+</slide>
+
+<slide>
+  <hgroup>
+      <h2>Exemplo: Cache de arquivos remotos</h2>
+  </hgroup>
+  <article class="">
+    <pre class="prettyprint" data-lang="js">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/path/to/image.png', true);
+xhr.responseType = 'arraybuffer';
+xhr.onload = function(e) {
+  window.<a data-tooltip-property="requestFileSystem" data-tooltip-support='["webkit"]' data-tooltip-js></a>(TEMPORARY, 1024 * 1024, function(fs) {
+    <b>fs.root.getFile('image.png', {create: true}, 
+      function(fileEntry) {</b>
+
+
+
+
+
+
+
+    <b>
+      }, onError);</b>
+  }, onError);
+};
+
+xhr.send();</pre>
+</article>
+</slide>
+
+<slide>
+  <hgroup>
+      <h2>Exemplo: Cache de arquivos remotos</h2>
+  </hgroup>
+  <article class="">
+    <pre class="prettyprint" data-lang="js">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/path/to/image.png', true);
+xhr.responseType = 'arraybuffer';
+xhr.onload = function(e) {
+  window.<a data-tooltip-property="requestFileSystem" data-tooltip-support='["webkit"]' data-tooltip-js></a>(TEMPORARY, 1024 * 1024, function(fs) {
+    fs.root.getFile('image.png', {create: true}, 
+      function(fileEntry) {
+
+        <b>fileEntry.createWriter(function(writer) {</b>
+        writer.onwriteend = function(e) { ... };
+        writer.onerror = function(e) { ... };
+        <b>writer.write(new Blob([xhr.response], {type: 'image/png'}));</b>
+        <b>
+      }, onError);</b>
+    }, onError);
+  }, onError);
+};
+
+xhr.send();
+</pre>
+</article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>Usando arquivos do sandboxed FS</h2>
+  </hgroup>
+  <article>
+    <ul>
+      <li>Arquivos/diretórios recebem uma ( <code>filesystem:</code> ) URL:</li>
+    </ul>
+    <pre class="centered" style="font-size:25px;">
+<b>filesystem:</b><b alt="Origem da app" class="blue" data-tooltip="Origem da app"><span class="property" style="color:inherit;">http://example.com</span></b>/<b alt="Tipo de storage" class="red" data-tooltip="Tipo de storage"><span class="property" style="color:inherit;">temporary</span></b>/<b alt="Path do arquivo/diretório" class="green" data-tooltip="Path do arquivo/diretório"><span class="property" style="color:inherit;">image.png</span></b></pre>
+    <ul><li>Uso em src/href:</li></ul>
+    <pre class="prettyprint" data-lang="js">
+var img = document.createElement('img');
+img.src = <b>fileEntry.toURL();</b>
+document.body.appendChild(img);</pre>
+    <ul><li>Qual o <code>FileEntry</code> de uma URL <code>filesystem:</code>?</li></ul>
+    <pre class="prettyprint" data-lang="js">
+window.<a data-tooltip-property="resolveLocalFileSystemURL" data-tooltip-support='["webkit"]' data-tooltip-js class="bold"></a>(img.src, 
+  function(fileEntry) { ... });</pre>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>Async alert: zilhões de callbacks!</h2>
+  </hgroup>
+  <article class="">
+    <pre class="prettyprint" data-lang="js">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/path/to/image.png', true);
+xhr.responseType = 'arraybuffer';
+xhr.onload = function(e) {
+  window.<a data-tooltip-property="requestFileSystem" data-tooltip-support='["webkit"]' data-tooltip-js></a>(TEMPORARY, 1024 * 1024, function(fs) {
+    fs.root.getFile('image.png', {create: true}, function(fileEntry) {
+
+      fileEntry.createWriter(function(writer) {
+        writer.onwriteend = function(e) { ... };
+        writer.onerror = function(e) { ... };
+        writer.write(new Blob([xhr.response], {type: 'image/png'}));
+      }, onError);
+    }, onError);
+  }, onError);
+};
+
+xhr.send();
+</pre>
+</article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>filer.js ( <a href="https://github.com/ebidel/filer.js">github.com/ebidel/filer.js</a> )</h2>
+  </hgroup>
+  <article>
+    <p>Biblioteca que implementa comandos UNIX (ls, cp, mv)</p>
+    <pre class="prettyprint" data-lang="js">
+<b>var filer = new Filer();</b>
+
+filer.<b>init</b>({persistent: false, size: 1024 * 1024}, function(fs) {...}, onError);
+
+filer.<b>ls</b>('path/to/some/dir/', function(entries) { ... }, onError);
+
+<b>filer.cp('file.txt', '/path/to/folder', 'newname.txt', function(entry) {
+    // entry.fullPath == '/path/to/folder/newname.txt'
+}, onError);</b>
+
+var b = new Blob(['body { color: red; }'], {type: 'text/css'});
+filer.<b>write</b>('styles.css', {data: b, type: b.type}, function(entry, writer) {
+  ...
+}, onError);</pre>
+</article>
+</slide>
+
+<slide class="fill nobackground" data-body-class="blueprint">
+  <hgroup>
+    <h2 class="white">Demo: Filesystem Playground</h2>
+  </hgroup>
+  <article style="margin-top:0;">
+    <a href="http://html5-demos.appspot.com/static/filesystem/filer.js/demos/index.html" class="previewframe"><iframe data-src="http://html5-demos.appspot.com/static/filesystem/filer.js/demos/index.html" style="-webkit-transform: scale(0.75) translateX(-130px);width: 120%;height:600px;"></iframe></a>
+  </article>
+</slide>
+
+<slide class="segue">
+  <article class="flexbox vcenter auto-fadein">
+    <h2 class="black" style="font-size:45px;">Tudo bem, mas isso só funciona no Chrome, certo?</h2>
+    <p class="centered build toppadding"><a href="http://html5-demos.appspot.com/static/filesystem/idb.filesystem.js/demos/playground/index.html" class="demo">não exatamente...</a></p>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>Browser Support</h2>
+    <h3>HTML5 Filesystem API + <a href="https://github.com/ebidel/idb.filesystem.js">idb.filesystem.js</a> shim!</h3>
+  </hgroup>
+  <article class="flexbox vcenter" style="height:65%">
+    <div class="browser-support">
+      <img src="images/browser_logos/safari_logo.png">
+      <img src="images/chrome_logo.png" class="supported">
+      <img src="images/browser_logos/ff_logo.png" class="supported">
+      <img src="images/browser_logos/opera_logo.png">
+      <img src="images/browser_logos/ie10_logo.png" class="supported">
+    </div>
+  </article>
+</slide>
+
+<slide class="can nobackground">
+  <article class="flexbox vcenter">
+    <hgroup>
+      <h2 class="white auto-fadein">Downloads sem servidor</h2>
+      <span class="build"><h1 class="stamp">Confirmado</h1></span>
+    </hgroup>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <span>
+      <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/links.html#downloading-resources" class="spec" title="Spec link"></a>
+    </span>
+    <h2>Download client-side</h2>
+  </hgroup>
+  <article class="build">
+    <p><label class="old"></label>Forçar downloads do servidor:</p>
+    <pre class="prettyprint" data-lang="http">
+Content-Disposition: attachment; filename="MyLogo.png";</pre>
+    <ul class="toppadding">
+      <li>Apps client-side precisam permitir download de dados gerados pela app.</li>
+    </ul>
+    <p><label class="new"></label>Atributo <code>download</code> para fazer download de arquivos ao invés de navegar:</p>
+    <pre class="prettyprint" data-lang="html">
+&lt;a href="filesystem:http://example.com/temporary/image.png"
+  <b>download="image.png"</b>>download me&lt;/a></pre>
+  </article>
+</slide>
+
+<slide hidden class="fill nobackground" data-body-class="blueprint">
+  <hgroup>
+    <h2 class="white">Demo: Novel Generator</h2>
+  </hgroup>
+  <article>
+    <a href="http://html5-demos.appspot.com/static/a.download.html" class="previewframe"><iframe data-src="http://html5-demos.appspot.com/static/a.download.html"></iframe></a>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>Exemplo: Download de conteúdo dinâmico</h2>
+  </hgroup>
+  <article>
+    <pre class="prettyprint" data-lang="js">
+function downloadLink(name, content, mimetype) {
+  var a = document.createElement('a');
+  <b>a.href = window.<a data-tooltip-property="URL.createObjectURL" data-tooltip-lowercase data-tooltip-support='["unprefixed", "webkit"]' data-tooltip-js></a>(
+    new Blob([content], {type: mimetype}));</b>
+  <b>a.download = name;</b>
+  a.textContent = 'Download pronto';
+
+  document.body.appendChild(a);
+}
+
+downloadLink('MyNovel.txt', 
+            document.querySelector('textarea').textContent, 
+            'text/plain');
+  </pre>
+</article>
+</slide>
+
+<slide class="can nobackground" data-body-class="tools">
+  <article class="flexbox vcenter">
+    <hgroup>
+      <h2 class="white auto-fadein">Acesso ao hardware</h2>
+      <span class="build"><h1 class="stamp">Confirmado</h1></span>
+    </hgroup>
+    <div class="source"><a href="http://www.flickr.com/photos/katerha/5746905652/" class="white">www.flickr.com/photos/katerha/5746905652/</a></div>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>"Device APIs"</h2>
+  </hgroup>
+  <article class="build">
+    <p>Device APIs WG: <a href="http://www.w3.org/2009/dap/">www.w3.org/2009/dap/</a></p>
+    <ul class="build">
+      <li>Geolocation API</li>
+      <li>Device Orientation API ( acelerômetro )</li>
+      <li>WebGL ( GPU )</li>
+      <li>HTML5 Filesystem API ( sandboxed filesystem )</li>
+      <li><code>navigator.onLine</code> / <code>navigator.connection</code> ( conectividade de rede )</li>
+      <li>Battery API</li>
+      <li>Gamepad API</li>
+      <li>WebRTC ( voice &amp; video input ) / Web Audio API ( core audio )</li>
+    </ul>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>Primeiro passo para apps comandadas por voz!</h2>
+  </hgroup>
+  <article class="flexbox vcenter">
+    <input id="speech-input-textbox" type="text" x-webkit-speech lang="pt_BR" 
+    style="width:400px;height:50px;font-size:135%;">
+    <pre class="prettyprint centered toppadding" data-lang="html">
+      &lt;input type="text" <b>x-webkit-speech lang="pt_BR"</b>&gt;</pre>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <span>
+      <img src="images/icons/radar.svg" class="radar" title="Coming soon...keep it on your radar!">
+      <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html" class="spec" title="Spec link"></a>
+    </span>
+    <h2>Segundo passo para apps comandadas por voz!!!!</h2>
+  </hgroup>
+  <article class="flexbox vcenter">
+    <div id="speechresult" style="width: 600px; height: 200px"></div>
+    <button id="speechbutton" onclick="toggleStartStop()"></button>
+
+    <script type="text/javascript">
+      var recognizing;
+      var recognition = new webkitSpeechRecognition({"language": "pt_BR"});
+      recognition.lang="pt_BR";
+      recognition.continuous = true;
+      reset();
+      recognition.onend = reset;
+
+      recognition.onresult = function (speechEvent) {
+        for (var i = speechEvent.resultIndex; i < speechEvent.result.length; ++i) {
+          if (speechEvent.result.final) {
+            speechresult.innerText += speechEvent.result[i].transcript;
+          }
+        }
+      }
+
+      function reset() {
+        recognizing = false;
+        speechbutton.innerHTML = "Iniciar";
+      }
+
+      function toggleStartStop() {
+        if (recognizing) {
+          recognition.stop();
+          reset();
+        } else {
+          recognition.start();
+          recognizing = true;
+          speechbutton.innerHTML = "Interromper";
+        }
+      }
+    </script>
+
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>Camera e Microfone</h2>
+  </hgroup>
+  <article>
+    <p>WebRTC: acesso à câmera e ao microfone sem plugins</p>
+    <pre class="prettyprint" data-lang="js">
+<b>navigator.<a data-tooltip-property="getUserMedia" data-tooltip-support='["unprefixed", "webkit", "moz"]' data-tooltip-js></a></b>({audio: true, video: true}, 
+  function(stream) {
+    var video = document.querySelector('video');
+    video.src = <b>window.<a data-tooltip-property="URL.createObjectURL" data-tooltip-lowercase data-tooltip-support='["unprefixed", "webkit"]' data-tooltip-js></a>(stream)</b>;
+  }, function(e) {
+    console.log(e);
+  });
+</pre>
+<pre class="prettyprint centered" data-lang="html">
+  &lt;video autoplay controls&gt;&lt;/video&gt;
+</pre>
+</article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>Demos</h2>
+  </hgroup>
+  <article>
+    <ul>
+      <li><a href="http://html5-demos.appspot.com/static/getusermedia/photobooth.html">Photo booth</a></li>
+      <li><a href="https://apprtc.appspot.com/">Demo do WebRTC no Google App Engine</a></li>
+      <li><a href="http://neave.com/webcam/html5/">Live Effects</a></li>
+      <li><a href="http://www.html5rocks.com/en/tutorials/webgl/jsartoolkit_webrtc/">Realidade aumentada</a></li>
+      <li><a href="http://learningthreejs.com/data/live-video-in-webgl/">WebGL Live TV</a></li>
+      <li><a href="http://people.opera.com/danield/webapps/instant-camera/">Instant Camera</a></li>
+      <li><a href="http://people.opera.com/danield/html5/explode/">Explode Video</a></li>
+    </ul>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <span>
+      <img src="images/icons/radar.svg" class="radar" title="Coming soon...keep it on your radar!">
+      <a href="http://crbug.com/113676" class="bug" title="Bug link"></a>
+    </span>
+    <h2>Gravando mídia</h2>
+  </hgroup>
+  <article>
+    <pre class="prettyprint" data-lang="html">
+      &lt;input type="button" value="&diams;" onclick="record(this)">
+      &lt;input type="button" value="◼" onclick="stop(this)">
+</pre>
+    <pre class="prettyprint" data-lang="js">
+      var localMediaStream, recorder;
+
+      var record = function(button) {
+        recorder = <b>localMediaStream.record()</b>;
+      };
+
+      var stop = function(button) {
+        localMediaStream.stop();
+        <b>recorder.getRecordedData</b>(function(blob) {
+          // Upload blob using XHR2.
+        });
+      };
+</pre>
+</article>
+</slide>
+
+<slide>
+  <hgroup>
+    <h2>Browser Support</h2>
+    <h3><code>getUserMedia()</code></h3>
+  </hgroup>
+  <article class="flexbox vcenter" style="height:65%">
+    <div class="browser-support">
+      <img src="images/browser_logos/safari_logo.png">
+      <img src="images/chrome_logo.png" class="supported">
+      <img src="images/browser_logos/ff_logo.png" class="supported">
+      <img src="images/browser_logos/opera_logo.png" class="supported">
+      <img src="images/browser_logos/ie10_logo.png">
+    </div>
+  </article>
+</slide>
+
+<slide class="can nobackground">
+  <article class="flexbox vcenter">
+    <hgroup>
+      <h2 class="white auto-fadein">&lt;audio&gt; "sexy"</h2>
+      <span class="build"><h1 class="stamp">Confirmado</h1></span>
+    </hgroup>
+  </article>
+</slide>
+<slide>
+  <hgroup>
+    <h2>Algumas demos BEM legais</h2>
+  </hgroup>
+  <article>
+    <ul>
+      <li><a href="http://www.technitone.com/">Technitone</a></li>
+      <li><a href="http://labs.dinahmoe.com/plink/">Plink</a></li>
+      <li><a href="http://static.echonest.com/BohemianRhapsichord/index.html">Bohemian Rhapsichord</a></li>
+      <li><a href="http://airtightinteractive.com/demos/js/reactive/">3D Audio Visualizer</a></li>
+      <li><a href="http://www.htmlfivewow.com/demos/hal/index.html">GAL 9000</a></li>
+      <li><a href="http://www.htmlfivewow.com/demos/audio-visualizer/index.html">HTML5Wow Visualizer</a></li>
+      <li><a href="http://alteredqualia.com/three/examples/webgl_city.html">WebGL City</a></li>
+      <li><a href="http://www.iquilezles.org/apps/soundtoy/index.html">Sound Toy</a></li>
+    </ul>
+  </article>
+</slide>
+
+
+<slide class="can nobackground" data-body-class="stream">
+  <article class="flexbox vcenter">
+    <hgroup>
+      <h2 class="white auto-fadein">Stream Multimidia</h2>
+      <span class="build"><h1 class="stamp">Confirmado</h1></span>
+    </hgroup>
+    <div class="source"><a href="http://www.flickr.com/photos/nikonvscanon/2081397439/" class="white">www.flickr.com/photos/nikonvscanon/2081397439/</a></div>
+  </article>
+</slide>
+
+<slide>
+  <hgroup>
+    <span>
+      <a href="http://dev.w3.org/html5/websockets/#dom-websocket-binarytype" class="spec" title="Spec link"></a>
+    </span>
+    <h2>WebSockets binários</h2>
+  </hgroup>
+  <article>
+    <ul>
+      <li>WebSockets tinham as mesmas limitações que WebWorkers.</li>
+      <li>Agora aceitam <code>File</code>, <code>Blob</code>, ou <code>ArrayBuffer</code>!</li>
+    </ul>
+    <div class="build">
+      <pre class="prettyprint" data-lang="js">
+var socket = new WebSocket('ws://example.com/sock', ['dumby-protocol']);
+<b>socket.binaryType = 'blob';</b> // or 'arraybuffer'
+socket.onopen = function(e) {
+  window.setInterval(function() {
+    if (<b>socket.bufferedAmount</b> == 0) {
+      <b>socket.send(new Blob([blob1, blob2]));</b>
+    }
+  }, 50); // executa a cada 50ms apenas
+};
+socket.onmessage = function(e) {
+  document.querySelector('img').src = <b><a data-tooltip-property="URL.createObjectURL" data-tooltip-lowercase data-tooltip-support='["unprefixed", "webkit"]' data-tooltip-js></a>(e.data);</b>
+};
+</pre>
+</div>
+</article>
+</slide>
+
+
+<slide hidden>
+  <hgroup>
+    <h2>Browser Support</h2>
+  </hgroup>
+  <article class="flexbox vcenter">
+    <div class="browser-support">
+      <img src="images/browser_logos/safari_logo.png">
+      <img src="images/chrome_logo.png" class="supported">
+      <img src="images/browser_logos/ff_logo.png">
+      <img src="images/browser_logos/opera_logo.png">
+      <img src="images/browser_logos/ie10_logo.png">
+    </div>
+  </article>
+</slide>
+
+<slide>
+  <article class="flexbox vcenter auto-fadein can">
+    <h2>Chrome Frame</h2>
+    <img src="images/cf-logo.png" 
+    class="centered quimby_search_image" style="height:250px">
+    <p>Meta tag: </p>
+    <pre class="prettyprint">
+      &lt;meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    </pre>
+
+
+    <p>Header: </p>
+    <pre class="prettyprint">
+      X-UA-Compatible: IE=Edge,chrome=1
+    </pre>
+
+  </article>
+</slide>
+
+<!--### Final words of wisdom -->
+<slide class="segue">
+  <article class="flexbox vcenter auto-fadein">
+    <h2 class="black">The End</h2>
+  </article>
+</slide>
+
+<slide id="wrapup">
+  <hgroup>
+    <h2>Recap: Recursos de HTML5 que (talvez) você não conheça</h2>
+  </hgroup>
+  <article>
+    <ul></ul> <!-- dynamically filled -->
+  </article>
+</slide>
+
+<slide class="nobackground">
+  <article class="flexbox vcenter" id="chrome-heart">
+    <div class="chrome-logo spin"></div>
+
+    <h1 title="BFFs"><div class="jitter"></div> <img src="images/HTML5_Badge_128.png" style="margin-bottom:-24px;height:85px;"></h1>
+    <p class="toppadding"><a href="https://plus.google.com/b/102860501900098846931/102860501900098846931">+Google Chrome Developers</a></p>
+  </article>
+</slide>
+
+<slide class="thank-you-slide segue nobackground">
+  <h2>Dúvidas?</h2>
+  <aside class="gdbar right"><img src="images/chrome_logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt; Obrigado! &gt;</h2>
+    <p>Source: <a href="https://github.com/mangini/novidadeshtml5" class="white" style="border:none">github.com/mangini/novidadeshtml5</a></p>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+<slide class="logoslide dark nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo_white.png"></span>
+  </article>
+</slide>
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+<!--
+<script src="js/app.js"></script>
+<script src="js/angular-1.0.0.min.js" async></script>
+-->
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-24426061-2']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+</html>
