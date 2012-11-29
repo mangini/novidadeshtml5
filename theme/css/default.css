@@ -1886,12 +1886,21 @@ border:none}
 }
 
 
+.cssshader {
+  -webkit-transition: -webkit-filter ease-in-out 3s;
+  -webkit-filter: custom(
+    url(../../shaders/vertex/crumple.vs) 
+    mix(url(../../shaders/fragment/crumple.fs) multiply source-atop), 
+    50 50 border-box, 
+    transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), 
+    amount 0, strength 0, lightIntensity 1);
+}
 .cssshader:hover {
--webkit-filter: custom(
-  url(../../shaders/vertex/crumple.vs) 
-  mix(url(../../shaders/fragment/crumple.fs) multiply source-atop), 
-  50 50 border-box, 
-  transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), 
-  amount 1, strength 0.3, lightIntensity 1);
+  -webkit-filter: custom(
+    url(../../shaders/vertex/crumple.vs) 
+    mix(url(../../shaders/fragment/crumple.fs) multiply source-atop), 
+    50 50 border-box, 
+    transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), 
+    amount 1, strength 0.3, lightIntensity 1);
 }
 

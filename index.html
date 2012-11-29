@@ -162,7 +162,7 @@ window.(ononline|onoffline)</pre>
               <li>CSS3 resolve com 
                 <a href="http://adobe.github.com/web-platform/samples/css-regions/basic/transformed.html">regions</a>, 
                 <a href="http://adobe.github.com/web-platform/samples/css-exclusions/basic/shape-inside-dynamic.html">exclusions</a>, 
-                e <a href="http://html5-demos.appspot.com/static/css/flexbox/index.html" class="previewframe">flexible box</a>.</li>
+                e <a href="http://html5-demos.appspot.com/static/css/flexbox/index.html">flexible box</a>.</li>
             </ul>
           </article>
         </slide>
@@ -286,16 +286,16 @@ div:hover {
       <a href="http://webk.it/68469" class="bug" title="Bug link"></a>
       <a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html" class="spec" title="Spec link"></a>
     </span>
-    <h2>CSS Filter Effects</h2>
+    <h2>CSS Filter</h2>
   </hgroup>
   <article>
-    <p>Apply filter effects to any DOM element:</p>
+    <p>Aplique efeitos e filtros a qualquer elemento DOM:</p>
     <pre class="prettyprint" data-lang="css">
       video, img {
         <a data-tooltip-property="filter" class="bold"></a>: grayscale(0.5) blur(10px);
       }
     </pre>
-   <p>Good <a href="http://drublic.de/blog/effects-for-the-web/">blog post</a>.</p>
+   <p>Leia mais em <a href="http://drublic.de/blog/effects-for-the-web/">blog post</a>.</p>
    <p class="centered"><a href="http://lab.simurai.com/stars/" class="demo">Demo</a></p>
 </article>
 </slide>
@@ -328,7 +328,7 @@ div:hover {
             <article class="flexbox vcenter">
               <hgroup>
                 <h2 class="white auto-fadein">JavaScript multithread</h2>
-                <span class="build"><h1 class="stamp">Confirmed</h1></span>
+                <span class="build"><h1 class="stamp">Confirmado</h1></span>
               </hgroup>
             </article>
           </slide>
@@ -428,6 +428,8 @@ xhr.onload = function(e) {
 
 
 
+
+
 };
 xhr.send();    </pre>
   </article>
@@ -444,9 +446,15 @@ xhr.open('GET', '/path/to/image.png', true);
 xhr.responseType = 'arraybuffer';
 xhr.onload = function(e) {
   <b>window.<a data-tooltip-property="requestFileSystem" data-tooltip-support='["webkit"]' data-tooltip-js class="bold"></a>(TEMPORARY, 1024 * 1024, function(fs) {</b>
+
+
+
+
+
+
+
   <b>}, onError);</b>
 };
-
 xhr.send();</pre>
 </article>
 </slide>
@@ -462,20 +470,15 @@ xhr.open('GET', '/path/to/image.png', true);
 xhr.responseType = 'arraybuffer';
 xhr.onload = function(e) {
   window.<a data-tooltip-property="requestFileSystem" data-tooltip-support='["webkit"]' data-tooltip-js></a>(TEMPORARY, 1024 * 1024, function(fs) {
-    <b>fs.root.getFile('image.png', {create: true}, 
-      function(fileEntry) {</b>
-
-
-
+    <b>fs.root.getFile('image.png', {create: true}, function(fileEntry) {</b>
 
 
 
 
     <b>
-      }, onError);</b>
+    }, onError);</b>
   }, onError);
 };
-
 xhr.send();</pre>
 </article>
 </slide>
@@ -491,19 +494,15 @@ xhr.open('GET', '/path/to/image.png', true);
 xhr.responseType = 'arraybuffer';
 xhr.onload = function(e) {
   window.<a data-tooltip-property="requestFileSystem" data-tooltip-support='["webkit"]' data-tooltip-js></a>(TEMPORARY, 1024 * 1024, function(fs) {
-    fs.root.getFile('image.png', {create: true}, 
-      function(fileEntry) {
-
-        <b>fileEntry.createWriter(function(writer) {</b>
+    fs.root.getFile('image.png', {create: true}, function(fileEntry) {
+      <b>fileEntry.createWriter(function(writer) {</b>
         writer.onwriteend = function(e) { ... };
         writer.onerror = function(e) { ... };
         <b>writer.write(new Blob([xhr.response], {type: 'image/png'}));</b>
-        <b>
-      }, onError);</b>
+      <b>}, onError);</b>
     }, onError);
   }, onError);
 };
-
 xhr.send();
 </pre>
 </article>
